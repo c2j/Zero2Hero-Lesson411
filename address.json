@@ -1,0 +1,12 @@
+{
+	"localhost": {
+		"ProxyAdmin": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+		"MyContract": "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82",
+		"StorageStructure": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+	},
+	"testnet_bscscan": {
+		"ProxyAdmin": "0x7Cd46ae7a7e611355453ab517Cc0b30Eb10d6Daa",
+		"MyContract": "0xb948fDFb9E7429285584c883e7A3dc8e608925de",
+		"StorageStructure": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853"
+	}
+}
