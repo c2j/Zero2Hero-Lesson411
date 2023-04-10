@@ -1,90 +1,203 @@
-# Hardhat Boilerplate
+## Prepare
+Copy a file from secret.json.example to secret.json, fulfill mnemonic and etherscanApiKey using wallet mnemonic and bscscan API Key.
+```
+cp secret.json.example secret.json
+```
 
-This repository contains a sample project that you can use as the starting point
-for your Ethereum project. It's also a great fit for learning the basics of
-smart contract development.
-
-This project is intended to be used with the
-[Hardhat Beginners Tutorial](https://hardhat.org/tutorial), but you should be
-able to follow it by yourself by reading the README and exploring its
-`contracts`, `tests`, `scripts` and `frontend` directories.
-
-## Quick start
-
-The first things you need to do are cloning this repository and installing its
-dependencies:
-
-```sh
-git clone https://github.com/NomicFoundation/hardhat-boilerplate.git
-cd hardhat-boilerplate
+To install dependencies:
+```
 npm install
 ```
 
-Once installed, let's run Hardhat's testing network:
-
-```sh
+## Run Hardhat Node
+Before start node, comment this line `import "hardhat-deploy";` in hardhat.config.ts file, then run:
+```
 npx hardhat node
 ```
+It will output:
+```
+Started HTTP and WebSocket JSON-RPC server at http://127.0.0.1:8545/
 
-Then, on a new terminal, go to the repository's root folder and run this to
-deploy your contract:
+Accounts
+========
 
-```sh
-npx hardhat run scripts/deploy.js --network localhost
+WARNING: These accounts, and their private keys, are publicly known.
+Any funds sent to them on Mainnet or any other live network WILL BE LOST.
+
+Account #0: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 (10000 ETH)
+Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+
+Account #1: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8 (10000 ETH)
+Private Key: 0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d
+
+Account #2: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC (10000 ETH)
+Private Key: 0x5de4111afa1a4b94908f83103eb1f1706367c2e68ca870fc3fb9a804cdab365a
+
+Account #3: 0x90F79bf6EB2c4f870365E785982E1f101E93b906 (10000 ETH)
+Private Key: 0x7c852118294e51e653712a81e05800f419141751be58f605c371e15141b007a6
+
+Account #4: 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65 (10000 ETH)
+Private Key: 0x47e179ec197488593b187f80a00eb0da91f1b9d0b13f8733639f19c30a34926a
+
+Account #5: 0x9965507D1a55bcC2695C58ba16FB37d819B0A4dc (10000 ETH)
+Private Key: 0x8b3a350cf5c34c9194ca85829a2df0ec3153be0318b5e2d3348e872092edffba
+
+Account #6: 0x976EA74026E726554dB657fA54763abd0C3a0aa9 (10000 ETH)
+Private Key: 0x92db14e403b83dfe3df233f83dfa3a0d7096f21ca9b0d6d6b8d88b2b4ec1564e
+
+Account #7: 0x14dC79964da2C08b23698B3D3cc7Ca32193d9955 (10000 ETH)
+Private Key: 0x4bbbf85ce3377467afe5d46f804f221813b2bb87f24d81f60f1fcdbf7cbf4356
+
+Account #8: 0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f (10000 ETH)
+Private Key: 0xdbda1821b80551c9d65939329250298aa3472ba22feea921c0cf5d620ea67b97
+
+Account #9: 0xa0Ee7A142d267C1f36714E4a8F75612F20a79720 (10000 ETH)
+Private Key: 0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6
+
+Account #10: 0xBcd4042DE499D14e55001CcbB24a551F3b954096 (10000 ETH)
+Private Key: 0xf214f2b2cd398c806f84e317254e0f0b801d0643303237d97a22a48e01628897
+
+Account #11: 0x71bE63f3384f5fb98995898A86B02Fb2426c5788 (10000 ETH)
+Private Key: 0x701b615bbdfb9de65240bc28bd21bbc0d996645a3dd57e7b12bc2bdf6f192c82
+
+Account #12: 0xFABB0ac9d68B0B445fB7357272Ff202C5651694a (10000 ETH)
+Private Key: 0xa267530f49f8280200edf313ee7af6b827f2a8bce2897751d06a843f644967b1
+
+Account #13: 0x1CBd3b2770909D4e10f157cABC84C7264073C9Ec (10000 ETH)
+Private Key: 0x47c99abed3324a2707c28affff1267e45918ec8c3f20b8aa892e8b065d2942dd
+
+Account #14: 0xdF3e18d64BC6A983f673Ab319CCaE4f1a57C7097 (10000 ETH)
+Private Key: 0xc526ee95bf44d8fc405a158bb884d9d1238d99f0612e9f33d006bb0789009aaa
+
+Account #15: 0xcd3B766CCDd6AE721141F452C550Ca635964ce71 (10000 ETH)
+Private Key: 0x8166f546bab6da521a8369cab06c5d2b9e46670292d85c875ee9ec20e84ffb61
+
+Account #16: 0x2546BcD3c84621e976D8185a91A922aE77ECEc30 (10000 ETH)
+Private Key: 0xea6c44ac03bff858b476bba40716402b03e41b8e97e276d1baec7c37d42484a0
+
+Account #17: 0xbDA5747bFD65F08deb54cb465eB87D40e51B197E (10000 ETH)
+Private Key: 0x689af8efa8c651a91ad287602527f3af2fe9f6501a7ac4b061667b5a93e037fd
+
+Account #18: 0xdD2FD4581271e230360230F9337D5c0430Bf44C0 (10000 ETH)
+Private Key: 0xde9be858da4a475276426320d5e9262ecfc3ba460bfac56360bfa6c4c28b4ee0
+
+Account #19: 0x8626f6940E2eb28930eFb4CeF49B2d1F2C9C1199 (10000 ETH)
+Private Key: 0xdf57089febbacf7ba0bc227dafbffa9fc08a93fdc68e1e42411a14efcf23656e
+
+WARNING: These accounts, and their private keys, are publicly known.
+Any funds sent to them on Mainnet or any other live network WILL BE LOST.
 ```
 
-Finally, we can run the frontend with:
 
-```sh
-cd frontend
-npm install
-npm start
+## Compile Smart Contract
+
+```
+npx hardhat compile
 ```
 
-Open [http://localhost:3000/](http://localhost:3000/) to see your Dapp. You will
-need to have [Metamask](https://metamask.io) installed and listening to
-`localhost 8545`.
+It will output:
+```
+Generating typings for: 14 artifacts in dir: typechain-types for target: ethers-v5
+Successfully generated 44 typings!
+Compiled 14 Solidity files successfully
+```
 
-## User Guide
+## Test Contract testcases
 
-You can find detailed instructions on using this repository and many tips in [its documentation](https://hardhat.org/tutorial).
+```
+npx hardhat test
+```
+It will output:
+```
+Compiled 14 Solidity files successfully
 
-- [Writing and compiling contracts](https://hardhat.org/tutorial/writing-and-compiling-contracts/)
-- [Setting up the environment](https://hardhat.org/tutorial/setting-up-the-environment/)
-- [Testing Contracts](https://hardhat.org/tutorial/testing-contracts/)
-- [Setting up Metamask](https://hardhat.org/tutorial/boilerplate-project#how-to-use-it)
-- [Hardhat's full documentation](https://hardhat.org/docs/)
 
-For a complete introduction to Hardhat, refer to [this guide](https://hardhat.org/getting-started/#overview).
+  Token contract
+    Deployment
+      ✔ Should set the right owner (2161ms)
+      ✔ Should assign the total supply of tokens to the owner
+    Transactions
+Transferring from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 to 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 50 tokens
+Transferring from 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 to 0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc 50 tokens
+      ✔ Should transfer tokens between accounts (163ms)
+Transferring from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 to 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 50 tokens
+Transferring from 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 to 0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc 50 tokens
+      ✔ should emit Transfer events (58ms)
+      ✔ Should fail if sender doesn't have enough tokens (54ms)
+Transferring from 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 to 0x70997970c51812dc3a010c7d01b50e0d17dc79c8 50 tokens
+      ✔ Should fail if sender and transfer to are same (95ms)
 
-## What's Included?
 
-This repository uses our recommended hardhat setup, by using our [`@nomicfoundation/hardhat-toolbox`](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox). When you use this plugin, you'll be able to:
+  6 passing (3s)
+```
 
-- Deploy and interact with your contracts using [ethers.js](https://docs.ethers.io/v5/) and the [`hardhat-ethers`](https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-ethers) plugin.
-- Test your contracts with [Mocha](https://mochajs.org/), [Chai](https://chaijs.com/) and our own [Hardhat Chai Matchers](https://hardhat.org/hardhat-chai-matchers) plugin.
-- Interact with Hardhat Network with our [Hardhat Network Helpers](https://hardhat.org/hardhat-network-helpers).
-- Verify the source code of your contracts with the [hardhat-etherscan](https://hardhat.org/hardhat-runner/plugins/nomiclabs-hardhat-etherscan) plugin.
-- Get metrics on the gas used by your contracts with the [hardhat-gas-reporter](https://github.com/cgewecke/hardhat-gas-reporter) plugin.
-- Measure your tests coverage with [solidity-coverage](https://github.com/sc-forks/solidity-coverage).
+## Deploy to localhost
+uncomment this line `import "hardhat-deploy";` in hardhat.config.ts file, then run
+```
+npx hardhat deploy --network localhost --reset
+```
+It will output:
+```
+Nothing to compile
+No need to generate any newer typings.
+Deploying ProxyAdmin with account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+deploying "ProxyAdmin" (tx: 0x54125bb2113b88222373eac4845832bbcbc498d2f4642648e4abf17ee6545327)...: deployed at 0x5FbDB2315678afecb367f032d93F642f64180aa3 with 783905 gas
+ProxyAdmin deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Deploying My Contract with account: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+reusing "ProxyAdmin" at 0x5FbDB2315678afecb367f032d93F642f64180aa3
+deploying "TokenImpl_Implementation" (tx: 0x907808fec509366af45f7eedcc68586f0d4258c1e5ff7fe07f921ddc3a45571d)...: deployed at 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 with 833996 gas
+deploying "TokenImpl_Proxy" (tx: 0x0ce43b314a71fa7354b11612207eb57719baa7b829ef9af3707d31f5691d10a8)...: deployed at 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 with 967223 gas
+Proxy deployed to: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+Implementation deployed to: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+```
 
-This project also includes [a sample frontend/Dapp](./frontend), which uses [Create React App](https://github.com/facebook/create-react-app).
 
-## Troubleshooting
+## Deploy to Binance Testnet
+If deploy behind GFW, need to setup VPN and local http proxy:
+```
+export http_proxy=http://127.0.0.1:1080/
+export https_proxy=http://127.0.0.1:1080/
+```
+Then run following to deploy to bscscan testnet
+```
+npx hardhat deploy --network testnet_bscscan --reset
+```
+It will output:
+```
+Nothing to compile
+No need to generate any newer typings.
+Deploying ProxyAdmin with account: 0xD8bC996d9bce829382513c812b211EF3fF4E66de
+deploying "ProxyAdmin" (tx: 0x1bce3cbd036b797f63eaf09be0e267037e51b673b6d7b8592f906171eeef10e3)...: deployed at 0xE3DB275A503d3CED833369e2e7855E219331026d with 783305 gas
+ProxyAdmin deployed to: 0xE3DB275A503d3CED833369e2e7855E219331026d
+Deploying My Contract with account: 0xD8bC996d9bce829382513c812b211EF3fF4E66de
+reusing "ProxyAdmin" at 0xE3DB275A503d3CED833369e2e7855E219331026d
+deploying "TokenImpl_Implementation" (tx: 0x21d4c4175a7bc4abbf90184c84c49733c2f510e7603e47b29ae026ef15c567b7)...: deployed at 0xB1d9C2388188127e8F8467892bed8B76C91A75dA with 831396 gas
+deploying "TokenImpl_Proxy" (tx: 0xcd9855d402fe6321a621b298d1f187468d54f45d8c7f12197b111a69b1bbee2c)...: deployed at 0x564F6aC64e713BEf3fcB6905f03947e886D96807 with 964023 gas
+Proxy deployed to: 0x564F6aC64e713BEf3fcB6905f03947e886D96807
+Implementation deployed to: 0xB1d9C2388188127e8F8467892bed8B76C91A75dA
+```
 
-- `Invalid nonce` errors: if you are seeing this error on the `npx hardhat node`
-  console, try resetting your Metamask account. This will reset the account's
-  transaction history and also the nonce. Open Metamask, click on your account
-  followed by `Settings > Advanced > Reset Account`.
+If found that `deploying "TokenImpl_Implementation"insufficient funds for intrinsic transaction cost`,
+goto https://testnet.bnbchain.org/faucet-smart to get faucet BNB and then try again.
 
-## Setting up your editor
+## Verify Smart Contract
+When deploy contract, there is this output:
+```
+deploying "TokenImpl_Implementation" (tx: 0x21d4c4175a7bc4abbf90184c84c49733c2f510e7603e47b29ae026ef15c567b7)...: deployed at 0xB1d9C2388188127e8F8467892bed8B76C91A75dA with 831396 gas
+```
+Above is the Token Logic Contract deployment log, the contract address is `0xB1d9C2388188127e8F8467892bed8B76C91A75dA`, Now verify it:
+```
+npx hardhat verify 0xB1d9C2388188127e8F8467892bed8B76C91A75dA --network testnet_bscscan 
+```
+It will output:
+```
+Nothing to compile
+No need to generate any newer typings.
+Successfully submitted source code for contract
+contracts/TokenImpl.sol:TokenImpl at 0xB1d9C2388188127e8F8467892bed8B76C91A75dA
+for verification on the block explorer. Waiting for verification result...
 
-[Hardhat for Visual Studio Code](https://hardhat.org/hardhat-vscode) is the official Hardhat extension that adds advanced support for Solidity to VSCode. If you use Visual Studio Code, give it a try!
+Successfully verified contract TokenImpl on Etherscan.
+https://testnet.bscscan.com/address/0xB1d9C2388188127e8F8467892bed8B76C91A75dA#code
 
-## Getting help and updates
-
-If you need help with this project, or with Hardhat in general, please read [this guide](https://hardhat.org/hardhat-runner/docs/guides/getting-help) to learn where and how to get it.
-
-For the latest news about Hardhat, [follow us on Twitter](https://twitter.com/HardhatHQ), and don't forget to star [our GitHub repository](https://github.com/NomicFoundation/hardhat)!
-
-**Happy _building_!**
+```

@@ -24,17 +24,24 @@ describe("Token contract", function () {
   // Network to that snapshot in every test.
   async function deployTokenFixture() {
     // Get the ContractFactory and Signers here.
-    const Token = await ethers.getContractFactory("TokenImpl");
+    const TokenImpl = await ethers.getContractFactory("TokenImpl");
+    const Token = await ethers.getContractFactory("TokenProxy");
     const [owner, addr1, addr2] = await ethers.getSigners();
 
     // To deploy our contract, we just have to call Token.deploy() and await
     // for it to be deployed(), which happens onces its transaction has been
     // mined.
+    const hardhatTokenImpl = await TokenImpl.deploy();
     const hardhatToken = await Token.deploy();
 
+    await hardhatTokenImpl.deployed();
     await hardhatToken.deployed();
+    //Proxy Contract
+    await hardhatToken.implementation(hardhatTokenImpl.address)
 
     await hardhatToken.initialize(10000);
+    
+
 
     // Fixtures can return anything you consider useful for your tests
     return { Token, hardhatToken, owner, addr1, addr2 };
