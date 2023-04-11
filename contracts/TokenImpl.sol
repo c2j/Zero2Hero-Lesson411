@@ -13,7 +13,7 @@ contract TokenImpl {
     // Some string type variables to identify the token.
     string public name = "AIGC Token";
     string public symbol = "AIGC";
-    uint256 public constant VERSION = 1;
+    uint256 public constant VERSION = 2;
 
     bool public initialized;
 

@@ -32,13 +32,13 @@ describe("Token contract", function () {
     // for it to be deployed(), which happens onces its transaction has been
     // mined.
     const hardhatTokenImpl = await TokenImpl.deploy();
-    const hardhatToken = await Token.deploy();
+    const hardhatTokenProxy = await Token.deploy(hardhatTokenImpl.address);
 
     await hardhatTokenImpl.deployed();
-    await hardhatToken.deployed();
+    await hardhatTokenProxy.deployed();
     //Proxy Contract
-    await hardhatToken.implementation(hardhatTokenImpl.address)
-
+    // await hardhatToken.implementation(hardhatTokenImpl.address)
+    const hardhatToken = await TokenImpl.attach(hardhatTokenProxy.address);
     await hardhatToken.initialize(10000);
     
 
